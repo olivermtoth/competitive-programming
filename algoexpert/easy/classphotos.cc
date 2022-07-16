@@ -3,6 +3,7 @@
 #include <bitset>
 #include <cassert>
 #include <cmath>
+#include <cstddef>
 #include <cstring>
 #include <functional>
 #include <iomanip>
@@ -20,13 +21,46 @@ typedef long long ll;
 bool classPhoto(vector<int> blue, vector<int> red){
 	sort(red.begin(), red.end());
 	sort(blue.begin(), blue.end());
-	bool possible = true;
 	if(*red.end() > *blue.end()){
 		for(int i = 0; i<(int)blue.size(); i++){
-			// TODO: complete
+			if(red[i] < blue[i]){
+				return false;
+			}
 		}
 	}
-	return possible;
+	else if(*red.end() < *blue.end()){
+		for(int i = 0; i<(int)blue.size(); i++){
+			if(red[i] > blue[i]){
+				return false;
+			}
+		}
+	}
+	else{
+		int i = (int)blue.size()-1;
+		while(true){
+			if(blue[i] > red[i]){
+				for(int j = i-1; i>=0; i--){
+					if(red[j] < blue[j]){
+						return false;
+					}
+				}
+				break;
+			}
+			else if(red[i] > blue[i]){
+				for(int j = i-1; i>=0; j--){
+					if(red[j] > blue[j]){
+						return false;
+					}
+				}
+				break;
+			}
+			else{
+				i--;
+				continue;				
+			}
+		}
+	}
+	return true;
 }
 
 int main(){
