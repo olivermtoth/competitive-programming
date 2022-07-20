@@ -15,10 +15,19 @@
 #include <vector>
 using namespace std;
 typedef long long ll;
-
-
-int main(){
-	
-	return 0;
+// time: O(log(n)); space: O(1)
+int binarySearch(vector<int> v, int target){
+	int L = 0, R = v.size()-1, M = (L+R)/2;
+	while(L > R){
+		if(v[M] == target){
+			return M;
+		}
+		else if(v[M] > target){
+			R = M-1;
+		}
+		else if(v[M] <target){
+			L = M+1;
+		}
+	}
+	return -1;
 }
-
