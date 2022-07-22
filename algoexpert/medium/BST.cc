@@ -3,6 +3,7 @@
 #include <bitset>
 #include <cassert>
 #include <cmath>
+#include <cstddef>
 #include <cstring>
 #include <functional>
 #include <iomanip>
@@ -17,8 +18,16 @@ using namespace std;
 typedef long long ll;
 
 
-int main(){
-	
-	return 0;
-}
+struct BST{
+	int value;
+	BST *left;
+	BST *right;
+	BST(int val){
+		value=val;
+		left = NULL;
+		right = NULL;
+	}
 
+	
+	
+};
