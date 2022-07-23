@@ -35,9 +35,3 @@ int pairing(vector<int> red, vector<int> blue, bool fastest){
 	}
 	return res;
 }
-
-int main(){
-	
-	return 0;
-}
-

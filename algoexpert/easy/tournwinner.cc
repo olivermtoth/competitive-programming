@@ -12,6 +12,8 @@
 #include <queue>
 #include <random>
 #include <set>
+#include <string>
+#include <utility>
 #include <vector>
 using namespace std;
 
@@ -19,6 +21,8 @@ typedef long long ll;
 
 string winner(vector<vector<string>> competitions, vector<int> res){
 	unordered_map<string, int> m;
+	int max = -1;
+	string winner = "";
 	for(int i = 0; i<res.size(); i++){
 		if(m.find(competitions[i][0]) == m.end()){
 			m.insert(make_pair(competitions[i][0], 0));
@@ -28,9 +32,22 @@ string winner(vector<vector<string>> competitions, vector<int> res){
 		}
 
 		if(res[i] == 0){
-			//TODO: complete
+			m[competitions[i][0]]++;
+			pair<int, int> p;
+			if(m[competitions[i][0] > max]){
+				max = m[competitions[i][0]];
+				winner = competitions[i][0];
+			}
+		}
+		else{
+			m[competitions[i][1]]++;
+			if(m[competitions[i][1] > max]){
+				max = m[competitions[i][1]];
+				winner = competitions[i][1];
+			}
 		}
 	}
+	return winner;
 }
 
 int main(){

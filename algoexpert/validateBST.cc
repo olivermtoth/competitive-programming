@@ -27,11 +27,20 @@ struct BST{
 		right = NULL;
 	}
 };
-// TODO: complete!
+
 bool validateBSTHelper(BST *node, int MIN, int MAX){
-	if
+	if(node->value > MAX || node->value < MIN){
+		return false;
+	}
+	else if(node->left != NULL && !validateBSTHelper(node->left, MIN, node->value)){
+		return false;
+	}
+	else if (node->right != NULL && !validateBSTHelper(node->right, node->value, MAX)) {
+		return false;
+	}
+	return true;
 }
 
 bool validateBST(BST *tree){
-	return validateBSTHelper(tree, INT_MIN, INT_MAX);
+	return validateBSTHelper(tree, INT32_MIN, INT32_MAX);
 }

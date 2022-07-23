@@ -1,6 +1,6 @@
 #include <algorithm>
 #include <array>
-#inlude <bitset>
+#include <bitset>
 #include <cassert>
 #include <cmath>
 #include <cstring>
@@ -35,7 +35,7 @@ vector<int> second(vector<int> v, int target){
 	for(int i = 0; i<v.size(); i++){
 		if(m.contains(target-v[i])){
 			return {v[i], target-v[i]};
-		
+		}
 		else{
 			m.insert({v[i], 0});
 		}
@@ -73,4 +73,3 @@ int main(){
 	return 0;
 }
 
-}
